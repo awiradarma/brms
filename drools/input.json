@@ -1,0 +1,7 @@
+{
+ "model-namespace": "https://kiegroup.org/dmn/_4B1EDB3E-BB80-4CDD-8785-52AF13FFCD32",
+ "model-name": "CreditScore",
+ "decision-name": ["Check Credit Score"],
+ "decision-id": [],
+ "dmn-context" : {"Applicant": { "name": "John", "fico": 700 }}
+}

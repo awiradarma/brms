@@ -1,0 +1,100 @@
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_4B1EDB3E-BB80-4CDD-8785-52AF13FFCD32" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" id="_D303F0E6-E0BF-4342-888B-74E2E7A438E0" name="CreditScore" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_4B1EDB3E-BB80-4CDD-8785-52AF13FFCD32">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_8FF97271-6F0A-4D20-B6DC-8736604BA899" name="applicant" isCollection="false">
+    <dmn:itemComponent id="_31D559A0-7698-4B01-BE49-3A8B0E2A5DB2" name="name" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_A0112967-1BC1-4663-AA63-2A1E17C2E9A9" name="fico" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:inputData id="_AA291BFB-61EC-4588-B1C3-AF347DF66453" name="Applicant">
+    <dmn:extensionElements/>
+    <dmn:variable id="_A31A7D47-C4D6-4F26-B2AB-6EAC9E5BFCA6" name="Applicant" typeRef="applicant"/>
+  </dmn:inputData>
+  <dmn:decision id="_5C29E6BC-E182-40B0-8FCD-D2F0312227B4" name="Check Credit Score">
+    <dmn:extensionElements/>
+    <dmn:variable id="_E4AB9C51-FA33-4716-8FAE-E2B697C0E466" name="Check Credit Score" typeRef="string"/>
+    <dmn:informationRequirement id="_74849E2F-E8C0-4D9F-B78E-07BA77A24131">
+      <dmn:requiredInput href="#_AA291BFB-61EC-4588-B1C3-AF347DF66453"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_B87505C5-2E01-4715-AF92-68B19F3E02F8" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_D1633B13-05CC-4433-9EA7-61C0F393BEE5">
+        <dmn:inputExpression id="_113EEBCF-34DE-450F-8366-2E0645AC9A1D" typeRef="number">
+          <dmn:text>Applicant.fico</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_6039D613-BC68-4AC1-B76D-68235D97B957"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_9B4CBBF6-26BE-4AFE-A04B-3DBBF015EAF7">
+        <dmn:inputEntry id="_E8B7BB12-8117-48F7-BAC5-1E2A8D69F287">
+          <dmn:text>&lt;= 500</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_43A0D385-29E6-441D-B995-91D0FCDB6D6F">
+          <dmn:text>"bad"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_FD79118F-1AC9-4D1F-AD43-190508B3A5DD">
+        <dmn:inputEntry id="_F6EC7400-0F43-4830-96DC-6C6C747D3191">
+          <dmn:text>(500 .. 750)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_CDDD711F-3CFC-4384-8587-CB4DDF7B8339">
+          <dmn:text>"good"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_12458DB3-FE86-49D0-9BDC-57C63681C513">
+        <dmn:inputEntry id="_F9DD029F-3A9F-4022-8EC8-7BCA91ED0C1D">
+          <dmn:text>&gt;= 750</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_0D50C5BF-3A1E-4E5E-B9A2-270FF2B67C8E">
+          <dmn:text>"excellent"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_B87505C5-2E01-4715-AF92-68B19F3E02F8">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>230</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_AA291BFB-61EC-4588-B1C3-AF347DF66453" dmnElementRef="_AA291BFB-61EC-4588-B1C3-AF347DF66453" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="494" y="397" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_5C29E6BC-E182-40B0-8FCD-D2F0312227B4" dmnElementRef="_5C29E6BC-E182-40B0-8FCD-D2F0312227B4" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="494" y="177" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_74849E2F-E8C0-4D9F-B78E-07BA77A24131" dmnElementRef="_74849E2F-E8C0-4D9F-B78E-07BA77A24131">
+        <di:waypoint x="594" y="422"/>
+        <di:waypoint x="494" y="202"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
