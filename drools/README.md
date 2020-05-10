@@ -43,9 +43,9 @@ docker run -p 8180:8080 -d --name kie-server --link jbpm-workbench:kie-wb jboss/
 ## Execute the model
 * Create the [input JSON](input.json) file  
 * Invoke it from the command line!  
->curl -u kieserver:kieserver1! -H "accept: application/json" -H "content-type: application/json" -X POST "http://localhost:8180/kie-server/services/rest/server/containers/CreditScore/dmn" -d @input.json  
+<pre>curl -u kieserver:kieserver1! -H "accept: application/json" -H "content-type: application/json" -X POST "http://localhost:8180/kie-server/services/rest/server/containers/CreditScore/dmn" -d @input.json  
  
-> {  
+{  
    "type" : "SUCCESS",  
    "msg" : "OK from container 'CreditScore'",  
    "result" : {  
@@ -73,4 +73,4 @@ docker run -p 8180:8080 -d --name kie-server --link jbpm-workbench:kie-wb jboss/
     }  
   }  
 }  
-
+</pre>
