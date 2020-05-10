@@ -19,12 +19,12 @@
   ![odm_deployments](odm_decisioncenter_deployments.png)
 * check using the RES console
   ![res](odm_res_console.png) 
-* get the HTDS OpenAPI - JSON descriptor
-  ![res_htds](odm_retrieve_htds.png)
+* get the HTDS OpenAPI - JSON descriptor  
+  ![res_htds](odm_retrieve_htds.png)  
   ![res_openapi](odm_decisionservice_openapi.png)
 
 ## Execute the Decision Service!
 * prepare a [JSON input file](input.json)
 * hit the decision service endpoint
->curl -X POST http://localhost:9060/DecisionService/rest/My_Decision_RuleApp/1.0/My_Decision/1.0 -H 'content-type: application/json' -H 'accept: application/json' -d @input.json
+>curl -X POST http://localhost:9060/DecisionService/rest/My_Decision_RuleApp/1.0/My_Decision/1.0 -H 'content-type: application/json' -H 'accept: application/json' -d @input.json  
 >{"__DecisionID__":"","Credit_Ratings":"Excellent"}
